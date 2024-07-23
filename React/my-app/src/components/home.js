@@ -223,7 +223,7 @@ class Home extends Component {
             const response = await axios.get('http://localhost:4000/historial/' + busqueda.modulo);
 
             if (response.data.message === 'success') {
-                console.log(response)
+               
                 if (busqueda.modulo === 'Entrada' || busqueda.modulo === 'Entradas') {
                     this.setState({
                         historialBd: response.data.results,
@@ -231,7 +231,7 @@ class Home extends Component {
                     })
                 }
                 if (busqueda.modulo === 'Salida' || busqueda.modulo === 'Salidas') {
-                    console.log(response)
+                   
                     this.setState({
                         historialBdS: response.data.results,
                         permiso1: true
@@ -284,30 +284,8 @@ class Home extends Component {
                 'Accept': 'application/json'
             }
         };
-        if (selectedOption === 'nuevo') {
-
-            Swal.fire({
-                title: "Producto Agregado",
-                text: "Nuevo producto en inventario",
-                icon: "success"
-            });
-            const { producto } = this.state;
-            let url = 'http://localhost:4000/producto/' + producto.nombre
-            console.log(url)
-            try {
-                const response = await axios.get(url);
-                if (response.data.message === 'success') {
-                    this.setState({
-                        productoBD: response.data.results,
-                        status: response.data.message
-                    })
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-
-        }
-        else if (selectedOption === 'editar') {
+ 
+        if (selectedOption === 'editar') {
             Swal.fire({
                 title: "Estatus Actualizado",
                 text: "Estatus de producto remplazado",
@@ -455,7 +433,7 @@ class Home extends Component {
                 });
                 typeUser = true;
                 if (busqueda.modulo === 'Entrada' && this.state.permiso === true) {
-                    console.log(this.state.historialBd)
+                    
                     history = this.state.historialBd.map((register, i) => {
                         return (
                             <tr key={i}>
@@ -526,7 +504,7 @@ class Home extends Component {
                                     <option value="">Seleccione una opción</option>
                                     <option value="aumentar">Aumentar Inventario</option>
                                     <option value="editar">Editar Estatus</option>
-                                    <option value="nuevo">Producto Nuevo</option>
+                                    {/* <option value="nuevo">Producto Nuevo</option>*/}
                                 </select>
 
                                 {selectedOption === 'aumentar' && (
