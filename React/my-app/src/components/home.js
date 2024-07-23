@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 class Home extends Component {
@@ -419,6 +420,9 @@ class Home extends Component {
         this.getHistory();
     }
 
+    logOut = () => {
+        this.setState({logout: true})
+    }
 
 
 
@@ -426,6 +430,10 @@ class Home extends Component {
 
 
     render() {
+
+        if(this.state.logout === true){
+            return <Redirect to={'/login'}></Redirect>
+        }
         const { selectedOption, busqueda } = this.state;
 
         let listProducts
@@ -498,10 +506,17 @@ class Home extends Component {
 
                 <div className="item">
                     {/* HEADER */}
-                    <div className="subitem flexBox-column center">
-                        <span className="title"> Bienvenido: {this.state.usuario.nombre}</span>
-                        <span>Estado del usuario:{this.state.usuario.estatus}</span>
-                        <span>Nivel del usuario:{this.state.usuario.rol}</span>
+                    <div className="subitem flexBox-row">
+                        <div className="subitem flexBox-column center">
+                            <span className="title"> Bienvenido: {this.state.usuario.nombre}</span>
+                            <span>Estado del usuario:{this.state.usuario.estatus}</span>
+                            <span>Nivel del usuario:{this.state.usuario.rol}</span>
+                        </div>
+                        <div className="subitem">
+                            <button className="btn" onClick={this.logOut}>Log out</button>
+                        </div>
+
+
                     </div>
                     {/* ACCIONES */}
                     {typeUser === true ?
