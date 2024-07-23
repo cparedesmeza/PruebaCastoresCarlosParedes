@@ -1,4 +1,5 @@
 Nota Importante: Debido al tiempo limitado, no me fue posible implementar una solución mas robusta para evitar sql injection.
+Además, no se concluyo el agregado de producto nuevo, dado a un error que no se pudo resolver por el tiempo, el codigo esta listo. Si hacen peticiones a el back end si agrega datos sin embargo desde la aplicación no ha sido posible. Dado el tiempo no se pudo resolver.  
 
 Inventario y uso de base de datos 4.2) • IDE utilizado: Visual Studio Code • Versión del lenguaje de programación utilizado.
 
